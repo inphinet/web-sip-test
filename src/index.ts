@@ -1,6 +1,8 @@
 import * as jssip from 'jssip';
 
 let socket = new jssip.WebSocketInterface('wss://sip.softwareconnect.com/ws');
+socket.via_transport = 'wss';
+
 let configuration = {
   sockets  : [ socket ],
   uri      : 'sip:30wss@sip.softwareconnect.com',
@@ -52,7 +54,7 @@ let eventHandlers = {
  
 // Call config
 let phoneNumber = 'tel:12628936063'
-let mediaConstraints = { audio: true };
+let mediaConstraints = { audio: true, video: false };
 let options = { eventHandlers, mediaConstraints };
  
 // Trigger call
